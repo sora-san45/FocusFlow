@@ -1,11 +1,10 @@
 ![AppWrite Notion](https://github.com/TH-Activities/saturday-hack-night-template/assets/64391274/a2cc61ac-e96d-43bb-b578-d2a2a58588fc)
 
 
-# Project Name
-Long Description about project. This project do that. This project is awesome...
+# FocusFlow
+
 ## Team members
-1. Name [Embed personal github URL]
-2. Name [Embed perosnal github URL]
+1. Mary Ann Jose [(https://github.com/sora-san45)]
 ## Link to product walkthrough
 [link to video]
 ## How it Works ?
