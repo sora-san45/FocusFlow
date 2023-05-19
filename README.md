@@ -5,6 +5,7 @@
 
 ## Team members
 1. [Mary Ann Jose](https://github.com/sora-san45)
+2. [Adrin Jose](https://github.com/Adrin7113)
 ## Link to product walkthrough
 [link to video]
 ## How it Works ?
