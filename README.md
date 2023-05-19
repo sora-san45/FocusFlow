@@ -4,7 +4,7 @@
 # FocusFlow
 
 ## Team members
-1. Mary Ann Jose (https://github.com/sora-san45)
+1. [Mary Ann Jose] (https://github.com/sora-san45)
 ## Link to product walkthrough
 [link to video]
 ## How it Works ?
