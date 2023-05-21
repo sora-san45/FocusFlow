@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'login.dart';
 
-
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
 
@@ -14,8 +13,18 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final emailControl = TextEditingController();
+  final nameControl = TextEditingController();
+  final passwordControl = TextEditingController();
+
+
+
+  createAccount() async{
+    
+  }
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Color.fromARGB(255, 18, 17, 17),
@@ -119,6 +128,7 @@ class _SignUpState extends State<SignUp> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 5.0, left: 7.0),
                 child: TextField(
+                  controller: nameControl,
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: "Name",
@@ -137,6 +147,7 @@ class _SignUpState extends State<SignUp> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 5.0, left: 7.0),
                 child: TextField(
+                  controller: emailControl,
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: "Email Address",
@@ -155,6 +166,7 @@ class _SignUpState extends State<SignUp> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 5.0, left: 7.0),
                 child: TextField(
+                  controller: passwordControl,
                   obscureText: true,
                   decoration: InputDecoration(
                     border: InputBorder.none,
@@ -165,39 +177,42 @@ class _SignUpState extends State<SignUp> {
               ),
             ),
             SizedBox(height: 40),
-            Stack(children: [
-              Container(
-                height: 60,
-                width: 350,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Color.fromARGB(255, 44, 43, 43),
-                        spreadRadius: 1,
-                        blurRadius: 10)
-                  ],
-                  gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        Color.fromARGB(255, 127, 127, 213),
-                        Color.fromARGB(255, 134, 168, 231),
-                        Color.fromARGB(255, 145, 234, 228)
-                      ]),
+            InkWell(
+              onTap: ()=>,
+              child: Stack(children: [
+                Container(
+                  height: 60,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Color.fromARGB(255, 44, 43, 43),
+                          spreadRadius: 1,
+                          blurRadius: 10)
+                    ],
+                    gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Color.fromARGB(255, 127, 127, 213),
+                          Color.fromARGB(255, 134, 168, 231),
+                          Color.fromARGB(255, 145, 234, 228)
+                        ]),
+                  ),
                 ),
-              ),
-              Positioned(
-                top: 17,
-                left: 143,
-                child: Text("Sign In",
-                    style: GoogleFonts.poppins(
-                        textStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600))),
-              )
-            ]),
+                Positioned(
+                  top: 17,
+                  left: 143,
+                  child: Text("Sign In",
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600))),
+                )
+              ]),
+            ),
             SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
