@@ -1,38 +1,31 @@
+import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:focusflow/login.dart';
 import 'package:focusflow/services/auth.dart';
+
+Client client = Client();
 void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => AuthAPI(),
-      child: const MyApp(),
-    ),
-  );
+  client
+      .setEndpoint('http://localhost/v1')
+      .setProject('ff')
+      .setSelfSigned(status: true);
+  runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final value = context.watch<AuthAPI>().status;
-    print('TOP CHANGE Value changed to: $value!');
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Appwrite Auth Demo',
-        debugShowCheckedModeBanner: false,
-        home: value == AuthStatus.uninitialized
-            ? const Scaffold(
-                body: Center(child: CircularProgressIndicator()),
-              )
-            : value == AuthStatus.authenticated
-                ? const TabsPage()
-                : const LoginPage(),
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: const Color(0xFFE91052),
-          ),
-        ));
+      home: LogIn(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }

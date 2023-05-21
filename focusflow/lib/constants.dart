@@ -1,3 +1,3 @@
-const appwriteEndpoint = 'https://cloud.appwrite.io/v1';
-const appwriteProjectId = '646997b77991e83f3be0';
+const appwriteEndpoint = 'http://10.0.2.2/v1';
+const appwriteProjectId = 'ff';
 const appwriteSelfSigned = true;

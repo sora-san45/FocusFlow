@@ -1,8 +1,12 @@
+import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:focusflow/services/auth.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
+import 'homepage.dart';
 import 'login.dart';
 
 class SignUp extends StatefulWidget {
@@ -17,11 +21,6 @@ class _SignUpState extends State<SignUp> {
   final nameControl = TextEditingController();
   final passwordControl = TextEditingController();
 
-
-
-  createAccount() async{
-    
-  }
   @override
   Widget build(BuildContext context) {
     
@@ -178,7 +177,7 @@ class _SignUpState extends State<SignUp> {
             ),
             SizedBox(height: 40),
             InkWell(
-              onTap: ()=>,
+              onTap: (){},
               child: Stack(children: [
                 Container(
                   height: 60,

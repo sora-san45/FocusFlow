@@ -9,7 +9,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final String name;
+  const HomePage({super.key, required this.name});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -21,6 +22,8 @@ class _HomePageState extends State<HomePage> {
     ["hi", false]
   ];
   final titleControl = TextEditingController();
+
+  var name;
   void changed(bool? val, int index) {
     setState(() {
       l[index][1] = !l[index][1];
@@ -82,14 +85,13 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.only(left: 30),
               child: Row(
                 children: [
-                  Text(
-                    "Hi, Mary",
-                    style:GoogleFonts.poppins(
-                      textStyle:TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 24, color: Color.fromARGB(255, 255, 255, 255)),
-                    )
-                  ),
+                  Text("Hi, ${name}",
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 24,
+                            color: Color.fromARGB(255, 255, 255, 255)),
+                      )),
                   SizedBox(width: 10),
                   Container(
                       height: 30,
@@ -108,10 +110,9 @@ class _HomePageState extends State<HomePage> {
                 height: 130,
                 width: 350,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Color.fromARGB(131, 57, 57, 57),
-                  border: Border.all(color:Colors.white)
-                ),
+                    borderRadius: BorderRadius.circular(20),
+                    color: Color.fromARGB(131, 57, 57, 57),
+                    border: Border.all(color: Colors.white)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -130,8 +131,9 @@ class _HomePageState extends State<HomePage> {
                           SizedBox(height: 10),
                           Text(
                             "tasks completed",
-                            style:
-                                TextStyle(fontSize: 14, color: Color.fromARGB(255, 255, 255, 255)),
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Color.fromARGB(255, 255, 255, 255)),
                           )
                         ],
                       ),
@@ -182,8 +184,11 @@ class _HomePageState extends State<HomePage> {
               child: TextField(
                 decoration: InputDecoration(
                     hintText: "Search",
-                    hintStyle: TextStyle(color:Colors.white),
-                    prefixIcon: Icon(Icons.search,color: Colors.white,),
+                    hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: Colors.white,
+                    ),
                     border: InputBorder.none),
               ),
             ),
@@ -201,9 +206,9 @@ class _HomePageState extends State<HomePage> {
                         child: ToDoTile(
                           title: l[index][0],
                           done: l[index][1],
-                          index:index,
+                          index: index,
                           onChanged: (value) => changed(value, index),
-                          deleteFun: (index)=>deleteTask(index),
+                          deleteFun: (index) => deleteTask(index),
                         ),
                       );
                     }),
@@ -218,7 +223,7 @@ class _HomePageState extends State<HomePage> {
           },
           elevation: 15.0,
           foregroundColor: Colors.black,
-          backgroundColor:Color.fromARGB(255, 134, 168, 231),
+          backgroundColor: Color.fromARGB(255, 134, 168, 231),
           icon: Icon(Icons.edit),
           label: Text("Create task")),
     );

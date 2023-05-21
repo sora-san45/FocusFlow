@@ -1,7 +1,10 @@
+import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:focusflow/services/auth.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'signup.dart';
 
 import 'homepage.dart';
@@ -15,6 +18,9 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
+  final emailControl = TextEditingController();
+  final passwordControl = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,27 +61,30 @@ class _LogInState extends State<LogIn> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Stack(children: [
-                  Container(
-                    height: 70,
-                    width: 170,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Color.fromARGB(131, 57, 57, 57),
-                        border: Border.all(color: Colors.white38)),
-                  ),
-                  Positioned(
-                      left: 67,
-                      top: 20,
-                      child: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage("lib/icons/google.png"),
-                                fit: BoxFit.cover)),
-                      ))
-                ]),
+                InkWell(
+                  onTap: () {},
+                  child: Stack(children: [
+                    Container(
+                      height: 70,
+                      width: 170,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Color.fromARGB(131, 57, 57, 57),
+                          border: Border.all(color: Colors.white38)),
+                    ),
+                    Positioned(
+                        left: 67,
+                        top: 20,
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage("lib/icons/google.png"),
+                                  fit: BoxFit.cover)),
+                        ))
+                  ]),
+                ),
                 SizedBox(width: 10),
                 Stack(children: [
                   Container(
@@ -119,6 +128,7 @@ class _LogInState extends State<LogIn> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 5.0, left: 7.0),
                 child: TextField(
+                  controller: emailControl,
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: "Email Address",
@@ -137,6 +147,7 @@ class _LogInState extends State<LogIn> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 5.0, left: 7.0),
                 child: TextField(
+                  controller: passwordControl,
                   obscureText: true,
                   decoration: InputDecoration(
                     border: InputBorder.none,
@@ -149,8 +160,7 @@ class _LogInState extends State<LogIn> {
             SizedBox(height: 40),
             InkWell(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomePage()));
+                AuthState().login(emailControl.text, passwordControl.text);
               },
               child: Stack(children: [
                 Container(
